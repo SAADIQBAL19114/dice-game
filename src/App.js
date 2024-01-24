@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PlayerSection from "./components/PlayerSection";
 
 function App() {
   const [imgSource, setImgSource] = useState(require("./img/dice-1.png"));
@@ -32,12 +33,11 @@ function App() {
 
   const handleSwitch = () => {
     if (playGame) {
-      const playerActive = setActivePlayer(activePlayer === 1 ? 2 : 1);
+      setActivePlayer(activePlayer === 1 ? 2 : 1);
       setScore1((prevScore) => prevScore + current1);
       setCurrent1(0);
       setScore2((prevScore) => prevScore + current2);
       setCurrent2(0);
-      return playerActive;
     }
   };
 
@@ -49,14 +49,16 @@ function App() {
     setPlayGame(true)
     setActivePlayer(1)
     setImgSource(require(`./img/dice-1.png`));
+    setWinner1(false)
+    setWinner2(false)
   }
 
   if(playGame){
-   if (score1 >= 100) {
+   if (score1 >= 10) {
      setPlayGame(false);
      setWinner1(true);
    }
-   if (score2 >= 100) {
+   if (score2 >= 10) {
      setPlayGame(false);
      setWinner2(true);
    }
@@ -64,44 +66,27 @@ function App() {
 
   return (
     <div className="App">
-      <section
-        className={`player ${activePlayer === 1 ? "player_active" : ""} ${
-          winner1 === true ? "player_winner" : ""
-        }`}
-      >
-        <h2 className={`name ${winner1 === true ? "h2_player_winner" : ""}`}>
-          Player 1
-        </h2>
-        <p className="score">{score1}</p>
-        <div className="current">
-          <p className="current_label">Current</p>
-          <p className="current_score">{current1}</p>
-        </div>
-      </section>
-      <section
-        className={`player ${activePlayer === 2 ? "player_active" : ""} ${
-          winner2 === true ? "player_winner" : ""
-        }`}
-      >
-        <h2 className={`name ${winner2 === true ? "h2_player_winner" : ""}`}>
-          Player 2
-        </h2>
-        <p className="score">{score2}</p>
-        <div className="current">
-          <p className="current_label">Current</p>
-          <p className="current_score">{current2}</p>
-        </div>
-      </section>
+      <PlayerSection
+        player = {"Player 1"}
+        activePlayer={1}
+        winner={winner1}
+        score={score1}
+        current={current1}
+        newActivePlayer={activePlayer}
+      />
+      <PlayerSection
+        player = {"Player 2"}
+        activePlayer={2}
+        winner={winner2}
+        score={score2}
+        current={current2}
+        newActivePlayer={activePlayer}
+      />
       <img src={imgSource} alt="Playing dice" className="dice" />
-      <button 
-        className="btn btn_new"
-        onClick={handleNewGame}
-      >
-      🔄 New Game</button>
-      <button
-        className="btn btn_roll"
-        onClick={handleDice}
-      >
+      <button className="btn btn_new" onClick={handleNewGame}>
+        🔄 New Game
+      </button>
+      <button className="btn btn_roll" onClick={handleDice}>
         🎲 Roll dice
       </button>
       <button className="btn btn_hold" onClick={handleSwitch}>

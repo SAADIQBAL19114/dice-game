@@ -8,7 +8,7 @@
 }
 
 html {
-  font-size: 62.5%;
+  font-size: 62%;
 }
 
 body {
@@ -18,8 +18,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("/public/background.jpg");
-  background-size: cover;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgb(188, 42, 42) 0%,
+    rgb(164, 18, 84) 59%,
+    rgb(119, 6, 119) 100%
+  );
 }
 
 .App {
@@ -27,8 +32,7 @@ body {
   width: 100rem;
   height: 60rem;
   background: #ffffff59;
-  backdrop-filter: blur(200);
-  filter: blur();
+  backdrop-filter: blur(2px);
   box-shadow: 0 3rem 5rem #00000040;
   border-right: 9px;
   overflow: hidden;
@@ -57,7 +61,7 @@ body {
 .score {
   font-size: 8rem;
   font-weight: 300;
-  color: royalblue;
+  color: #c7365f;
   margin-bottom: auto;
 }
 
@@ -78,7 +82,7 @@ body {
 }
 
 .current {
-  background: royalblue;
+  background: #c7365f;
   opacity: 0.8;
   border-radius: 9px;
   color: #fff;

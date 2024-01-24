@@ -19,6 +19,7 @@ body {
   align-items: center;
   justify-content: center;
   background-image: url("/public/background.jpg");
+  background-size: cover;
 }
 
 .App {
@@ -135,15 +136,6 @@ body {
   top: 46rem;
 }
 
-/* .btn:active {
-  transform: translate(-50%, 3px);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
-} */
-
-/* .btn:focus {
-  outline: none;
-} */
-
 .dice {
   position: absolute;
   left: 50%;
@@ -156,8 +148,7 @@ body {
 .player_winner {
   background: #2f2f2f;
 }
-
-.player_winner .name {
+.h2_player_winner {
   font-weight: 700;
   color: #c7365f;
 }
